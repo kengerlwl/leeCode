@@ -17,6 +17,9 @@
 # -105 <= 元素的值 <= 105
 # 对于使用Java的用户，请注意传入类型已修改为List<List<Integer>>。重置代码模板后可以看到这项改动。
 
+
+
+#这个解法很强了， 深刻运用了数据结构。
 class Solution:
     def smallestRange(self, nums):
         from queue import PriorityQueue  # 最小堆，里面元素自动排列，     ！！！！！！！！！！！！！！！！
