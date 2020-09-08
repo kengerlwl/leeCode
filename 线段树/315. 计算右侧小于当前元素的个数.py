@@ -40,5 +40,3 @@ class Solution(object):
             # 一边构建线段树一边计算答案
             res.append(root.add(nums[i]))
         return res[::-1]
-
-
