@@ -70,7 +70,44 @@
 
 
 
+#
+# # 正常先进先出队列   leecode不支持
+# import queue
+#
+# q=queue.Queue()    #如果不设置长度,默认为无限长
+# q.put(123)
+# q.put(456)
+# q.put(789)
+# q.put(100)
+# q.put(111)
+# q.put(233)
 
+
+print(q.queue[1])  # 查看指定数据
+
+
+
+
+
+# 后进先出队列
+# q = queue.LifoQueue()
+# q.put(12)
+# q.put(34)
+# print(q.get())
+
+
+#
+# # 数组
+# q = []
+# q.append(1)
+# q.append(2)
+# q.append(3)
+# a = q.pop()
+# a =q.remove(1)
+#
+# print(a)
+# print(q)
+#
 
 
 # # 优先级队列
