@@ -108,6 +108,10 @@
 #
 
 
+
+
+
+
 # # 优先级队列
 
 #
@@ -120,6 +124,20 @@
 # hq.heappush(h, [3, 'create tests'])
 
 
+# laptops = [
+#     {'name': 'ThinkPad', 'amount': 100, 'price': 91.1},
+#     {'name': 'Mac', 'amount': 50, 'price': 543.22},
+#     {'name': 'Surface', 'amount': 200, 'price': 21.09},
+#     {'name': 'Alienware', 'amount': 35, 'price': 31.75},
+#     {'name': 'Lenovo', 'amount': 45, 'price': 16.35},
+#     {'name': 'Huawei', 'amount': 75, 'price': 115.65}
+# ]
+#
+# cheap = heapq.nsmallest(3, portfolio, key=lambda s: s['price'])
+# expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
+
+
+
 # print(h)
 #
 # a = hq.heappop(h)
@@ -127,5 +145,21 @@
 #
 # b = hq.nlargest(2, h,lambda s:s[1])
 # print(b)
+
+
+
+
+
+
+
+
+
+
+# 哈希表
+#判断是否在表里面
+# A = {1,2,3,4}
+# a =1
+# flag = a in A
+# print(flag)
 
 
