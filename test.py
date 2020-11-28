@@ -1,11 +1,7 @@
+a = [1,2 ,3]
 
+a.insert(1, 5)
+print(a)
 
-# python 判断是否相等
-import copy
-a ={1, 2}
-b = {1}
-
-print(a == b)
-b.add(2)
-
-print(a == b)
+a.insert(2,6)
+print(a)

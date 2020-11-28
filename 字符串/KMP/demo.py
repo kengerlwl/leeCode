@@ -1,5 +1,4 @@
 
-# 学习自  https://leetcode-cn.com/problems/implement-strstr/solution/kmp-suan-fa-xiang-jie-by-labuladong/
 class Solution(object):
     def strStr(self, haystack, needle):
         """
@@ -107,38 +106,6 @@ class Solution(object):
 
         print(search(haystack))
         return search(haystack)
-
-
-# next 数组匹配
-
-# class Solution:
-#     def strStr(self, haystack: str, needle: str) -> int:
-#         if needle == '': return 0
-#         n = len(needle)
-#         m = len(haystack)
-#         j = 0
-#         pnext = self.getnext(needle)
-#
-#         for i in range(m):
-#             while j > 0 and needle[j] != haystack[i]:
-#                 j = pnext[j]
-#             if needle[j] == haystack[i]:
-#                 j += 1
-#                 if j == n:
-#                     return i - n + 1
-#         return -1
-#
-#     def getnext(self, s):
-#         n = len(s)
-#         pnext = [0, 0]  # 多一个前导0是为了方便后续指针跳跃，避免死循环
-#         j = 0
-#         for i in range(1, n):
-#             while j > 0 and s[i] != s[j]:
-#                 j = pnext[j]  # 指针跳跃
-#             if s[j] == s[i]:
-#                 j += 1
-#             pnext.append(j)
-#         return pnext
 
 
 
