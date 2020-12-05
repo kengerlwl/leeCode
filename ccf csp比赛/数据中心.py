@@ -45,11 +45,11 @@ class SPFA(object):
                 # 进行了松弛的点
                 if arrived[to]> arrived[now] + adj[now][to]:
                     arrived[to] =  arrived[now] + adj[now][to]
-                    if not vis[to]:
+                    if not vis[to] and count[to] < n:
                         vis[to] = True
                         count[to] +=1
                         q.append(to)
-                        if count[to] > N+1:  #  //判断负环
+                        if count[to] > N+1:  #  //判断负环，
                             return False
 
 
@@ -58,7 +58,25 @@ class SPFA(object):
 
 
 
-a = SPFA.networkDelayTime(None,[[1,2,1],[2,3,7],[1,3,4],[2,1,2]],
-3,
-2)
+# a = SPFA.networkDelayTime(None,[[1,2,1],[2,3,7],[1,3,4],[2,1,2]],
+# 3,
+# 2)
+# print(a)
+
+
+n  = input()
+n = int(n)
+m  = input()
+m = int(m)
+
+root = int(input())
+
+
+edges =[]
+for i in range(m):
+    s  = input().split(' ')
+    edges.append(( int(s[0]),int(s[1]),int(s[2]) ))
+
+sp = SPFA()
+a = sp.networkDelayTime(edges,n,root)
 print(a)
