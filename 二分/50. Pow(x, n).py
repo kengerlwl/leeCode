@@ -48,14 +48,9 @@ class Solution(object):
 
         return getPow(x, n)
 
-        """
-        :type x: float
-        :type n: int
-        :rtype: float
-        """
+
+
+
 
 ans = Solution.myPow(None,2,5)
 print(ans)
-
-
-# leetcode submit region end(Prohibit modification and deletion)

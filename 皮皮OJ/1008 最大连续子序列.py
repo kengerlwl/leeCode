@@ -39,6 +39,7 @@ while True:
     maxV = dp[0] = preSum[0]
     maxI = 0
 
+
     for i in range(1, k):
         if num[i] + dp[i-1] > num[i]:
             dp[i] = num[i] + dp[i-1]

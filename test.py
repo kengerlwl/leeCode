@@ -76,3 +76,35 @@
 #     print(comb_2(3,2))
 #     print(perm_1(3,2))
 #     print(perm_2(3,2))
+
+
+
+# #将10 进制转化为N进制
+# def TentoN(num, N):
+#     num = int(num)
+#     ans =[]
+#     while num !=0:
+#         rest = num % N
+#         num = num // N
+#         ans.append(rest)
+#
+#     ans.reverse()
+#     return ans
+#
+#
+# # 将N进制转化为10进制
+# def NtoTen(num, N):
+#     ans =0
+#     num = str(num)
+#     for i in num:
+#         ans= ans * N + int(i)
+#
+#     return ans
+#
+# print(NtoTen(10, 2))
+#
+# print(TentoN(10,8))
+
+
+s = '123456'
+print(s[0:1])
