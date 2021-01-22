@@ -55,7 +55,7 @@ for grade, group in student:
     # print(int(stu))
     ans.append([stu, group])
 
-ans = sorted(ans, key=)
+# ans = sorted(ans, key=)
 for i in ans:
     print(int(i[0] + 0.5), end=' ')
     print(i[1])

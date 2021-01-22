@@ -1,3 +1,2 @@
-a = input().split()
-print(a)
-print(type(a))
+print(6**10)
+print(10**10 / 100)
