@@ -1,2 +1,6 @@
-a = [1,3,4,5,7]
-print(a[1:3])
+x = 127
+i = x
+while i > 0:
+    print(bin(i))
+    i = (i-1) & x
+    # print(i)

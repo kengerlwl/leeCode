@@ -18,10 +18,7 @@ class BQSet():
         a  = self.getFather(a)
         b = self.getFather(b)
 
-        if self.f[a] == self.f[b]:
-            return True
-        else:
-            return False
+        return self.f[a] == self.f[b]
 
     def Union(self,source, a):
         a = self.getFather(a)
