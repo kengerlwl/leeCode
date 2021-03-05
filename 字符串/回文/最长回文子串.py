@@ -36,7 +36,7 @@
 #         return s[Fl:FR+1]
 
 
-# 试试dp,
+# 试试dp,动态规划不断变长
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         size = len(s)
