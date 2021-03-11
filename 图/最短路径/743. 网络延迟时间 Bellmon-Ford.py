@@ -22,6 +22,7 @@ class Solution(object):
         # print(arrived)
         if (max(arrived.values()) if len(arrived) == N else -1) == INF:
             return -1
+        print(arrived)
 
         return max(arrived.values()) if len(arrived) == N else -1
 

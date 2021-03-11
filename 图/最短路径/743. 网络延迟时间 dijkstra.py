@@ -32,6 +32,7 @@ class Solution(object):
                 if nei not in arrived:
                     heapq.heappush(pq, (d + adj[node][nei], nei))
 
+        print(arrived)
         return max(arrived.values()) if len(arrived) == N else -1
 
 a = Solution.networkDelayTime(None,times = [[2,1,1],[2,3,1],[3,4,1]], N = 4, K = 2)
