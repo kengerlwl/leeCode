@@ -38,7 +38,7 @@ def calF(f, dx, left, right):
 
 
     # 选值进行计算的点
-    xNum = np.linspace(left, right, int((right-left) /dx)  )
+    xNum = np.linspace(left, right, int((right-left) /dx))
 
     for i in xNum:
         now = f(i) * dx
@@ -60,7 +60,7 @@ c = []
 
 
 # 这里的范围就相当于是圈数
-for i in range(-30, 30):
+for i in range(0,6):
     print(i)
     tmpf = lambda x: ft(x)* np.exp(-1j * i * wo * x)  # 隐函数表达式
 
