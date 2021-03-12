@@ -61,5 +61,7 @@ def calFunc(x ,y):
 x, y =     varLD.loadData(filePath=path.FileDir + '\数学证明\傅里叶\将二维数据变成随着时间变化的函数\date')
 x = x - np.mean(x)
 y = y - np.mean(y)
+# x= 20 * x
+# y = 20 * y
 calFunc(x,y)
 T = len(Funcs)

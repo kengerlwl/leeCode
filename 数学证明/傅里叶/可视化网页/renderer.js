@@ -11,7 +11,7 @@ var FourierCircleRenderer = /** @class */ (function () {
         this.t = 0;
         this.reversey = 1;
         this.maxCircle = -1;
-        this.rotationSpeed = 0.005;
+        this.rotationSpeed = 0.005; //速度参数
         for (var i = 0; i < data.length; ++i) {
             this.rp[i] = [
                 Math.sqrt(data[i][0] * data[i][0] + data[i][1] * data[i][1]),
@@ -96,4 +96,4 @@ var FourierCircleRenderer = /** @class */ (function () {
 }());
 var canvas = document.getElementById('canvas');
 var a = new FourierCircleRenderer(data, canvas.getContext('2d'), canvas.height, canvas.width);
-setInterval(() => a.draw(), 1000 / 60000)
+setInterval(() => a.draw(), 1000 / 6000)  // 绘图计时触发
