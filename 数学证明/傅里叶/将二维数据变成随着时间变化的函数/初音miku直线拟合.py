@@ -1,8 +1,6 @@
 import numpy as np
 import path
 import matplotlib.pyplot as plt
-import math
-from 变量存储与加载 import varLD
 
 Funcs = []  # 存储每一段的计算函数
 T = None    # 存储一共需要花费的时间， 这里假设每段直线都花费相同的时间1
@@ -61,7 +59,6 @@ def calFunc(x ,y):
     plt.scatter(testX, testY)
     plt.show()
 
-import re
 trDatas = []#临时容器
 
 import re

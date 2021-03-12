@@ -4,8 +4,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-from 变量存储与加载 import varLD
-import path
 
 
 import 数学证明.傅里叶.将二维数据变成随着时间变化的函数.直线拟合 as Fun

@@ -11,7 +11,7 @@ var FourierCircleRenderer = /** @class */ (function () {
         this.t = 0;
         this.reversey = 1;
         this.maxCircle = -1;
-        this.rotationSpeed = 0.00002;
+        this.rotationSpeed = 0.005;
         for (var i = 0; i < data.length; ++i) {
             this.rp[i] = [
                 Math.sqrt(data[i][0] * data[i][0] + data[i][1] * data[i][1]),

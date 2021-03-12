@@ -1,7 +1,6 @@
 import numpy as np
 import path
 import matplotlib.pyplot as plt
-import math
 from 变量存储与加载 import varLD
 
 Funcs = []  # 存储每一段的计算函数
@@ -59,6 +58,8 @@ def calFunc(x ,y):
     plt.scatter(testX, testY)
     plt.show()
 
-x, y =     varLD.loadData( filePath=path.FileDir + '\数学证明\傅里叶\将二维数据变成随着时间变化的函数\date')
+x, y =     varLD.loadData(filePath=path.FileDir + '\数学证明\傅里叶\将二维数据变成随着时间变化的函数\date')
+x = x - np.mean(x)
+y = y - np.mean(y)
 calFunc(x,y)
 T = len(Funcs)

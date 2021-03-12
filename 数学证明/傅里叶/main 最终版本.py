@@ -4,11 +4,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-from 变量存储与加载 import varLD
-import path
 
 
-import 数学证明.傅里叶.将二维数据变成随着时间变化的函数.初音miku直线拟合 as Fun
+import 数学证明.傅里叶.将二维数据变成随着时间变化的函数.直线拟合 as Fun
 
 # x, y = varLD.loadData(filePath=path.FileDir + '\数学证明\傅里叶\将二维数据变成随着时间变化的函数\date')
 
@@ -48,7 +46,7 @@ wo = 2 * math.pi / T
 # 这里用得是欧拉公式化简后的 e 的指数形式
 c = []  # 参数c
 fc ={}  # 参数c
-n = 200  # 2n个圆圈
+n = 50  # 2n个圆圈
 # 这里的范围就相当于是圈数
 
 # 计算定积分, dx是微分程度， left， right是上下界
