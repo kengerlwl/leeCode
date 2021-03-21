@@ -10,7 +10,7 @@ class Solution:
 
         # 取出所有的键值对
         result = list(ranking.items())
-        # 排序
+        # 排序和查找
         result.sort(key=lambda x: (x[1], -ord(x[0])), reverse=True)
         return "".join([vid for vid, rank in result])
 
