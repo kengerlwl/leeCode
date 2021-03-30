@@ -2,6 +2,21 @@
 
 主要用来保存刷算法的题目
 
+## 牛客网python使用
+
+关于错误
+`EOFError: EOF when reading a line`
+ 通过try except解决就行
+```python
+while True:
+    try:
+        a = input()
+    except EOFError:
+        break
+```
+
+
+
 # 板子
 
 ## BFS

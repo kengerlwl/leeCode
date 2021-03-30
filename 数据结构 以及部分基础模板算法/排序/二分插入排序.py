@@ -1,4 +1,4 @@
-#二分插入排序
+#二分插入排序, 但是数组插入实际上是很消耗时间的，所以不合适
 def dichotomy(numList):
     newList =[numList[0]]
     for i in range(1,len(numList)):
