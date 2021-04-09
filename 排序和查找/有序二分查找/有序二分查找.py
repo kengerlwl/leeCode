@@ -9,7 +9,7 @@ class DichotomousSearch():
         l = 0
         r = len(nums)-1
 
-        while l<=r:
+        while l<r:
 
 
 
@@ -39,7 +39,7 @@ d = DichotomousSearch()
 
 print(d.search(
 [1,9, 9,9,9,11,11,11,16],
-9
+8
 
 )
 
