@@ -30,8 +30,8 @@ class quiteSort:
     def randomized_quicksort(self, nums, l, r):
         if r - l <= 0:
             return
-        mid = self.random
-        ized_partition(nums, l, r)
+        mid = self.randomized_partition(nums, l, r)
+        self.randomized_partition(nums, l, r)
         self.randomized_quicksort(nums, l, mid - 1)
         self.randomized_quicksort(nums, mid + 1, r)
 

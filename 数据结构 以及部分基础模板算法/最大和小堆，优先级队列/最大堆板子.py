@@ -1,9 +1,15 @@
 # 最大堆的实现
-class MaxHeap():
+def cmp(a, b):
+    return a > b
+
+class Heap():
     def __init__(self, maxSize=None):
         self.maxSize = maxSize
         self.li = [None] * maxSize
         self.count = 0
+
+    def setCmp(self, cmp):
+        self.cmp = cmp
 
     def length(self):
         # 求数组的长度
@@ -23,58 +29,65 @@ class MaxHeap():
         self._shift_up(self.count)  # 递归构建大堆
         self.count += 1
 
+
+    # 上浮
     def _shift_up(self, index):
         # 往大堆中添加元素，并保证根节点是最大的值:
         # 1.增加新的值到最后一个结点，在add实现； 2.与父节点比较，如果比父节点值大，则交换
         if index > 0:
             parent = (index - 1) // 2  # 找到根节点
-            if self.li[index] > self.li[parent]:  # 交换结点
+            if self.cmp(self.li[index] , self.li[parent]):  # 交换结点
                 self.li[index], self.li[parent] = self.li[parent], self.li[index]
                 self._shift_up(parent)  # 继续递归从底往上判断
 
     def extract(self):
         # 弹出最大堆的根节点，即最大值
         # 1.删除根结点，将最后一个结点作为更结点 ； 2.判断根结点与左右结点的大小，交换左右结点较大的
-        if not self.count:
+        if not self.count:  # 堆已经为空了
             raise Exception('null')
         value = self.li[0]
         self.count -= 1
         self.li[0] = self.li[self.count]  # 将最后一个值变为第一个
-        self._shift_down(0)
+        self._shift_down(0)  # 开始下沉
         return value
 
+    # 下沉
     def _shift_down(self, index):
         # 1.判断是否有左子节点并左大于根，左大于右；2.判断是否有右子节点，右大于根
-        left = 2 * index + 1
-        right = 2 * index + 2
+        left = 2 * index + 1  # 左子节点
+        right = 2 * index + 2 # 右子节点
         largest = index
         # 判断条件
 
 
         # 下面2个条件包含了，判断左右结点那个大的情况。如果为3， 4， 5,：
         #第一个判断条件使得largest = 1，再执行第二个条件，则判断其左结点与右结点的大小
-        if left < self.length() and self.li[left] > self.li[largest]:
+        if left < self.length() and self.cmp(self.li[left] , self.li[largest]):
             largest = left
-        if right < self.length() and self.li[right] > self.li[largest]:
+        if right < self.length() and self.cmp(self.li[right] , self.li[largest]):
             largest = right
 
         if largest != index:  # 将 两者交换
             self.li[index], self.li[largest] = self.li[largest], self.li[index]
             self._shift_down(largest)
+if __name__ == '__main__':
 
-m = MaxHeap(10)
-import numpy as np
+    import numpy as np
 
-np.random.seed(123)
-num = np.random.randint(100, size=10)  # 创建随机的10个数
-print(m.length())
-for i in num:
-    m.add(i)
+    m = Heap(10)
+    m.setCmp(cmp)
+
+    np.random.seed(123)
+    num = np.random.randint(100, size=10)  # 创建随机的10个数
+    print(m.length())
+    for i in num:
+        m.add(i)
+        m.show()
     m.show()
-m.show()
-print(m.length())
+    print(m.length())
 
-for i in range(5):
-    print(m.extract(), end=' ,')
+    for i in range(5):
+        print(m.extract(), end=' ,')
+        m.show()
 
-m.show()
+    m.show()
