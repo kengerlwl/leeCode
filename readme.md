@@ -15,6 +15,12 @@ while True:
         break
 ```
 
+## python效率问题
+```
+n = num[n:m]
+相当于逐个复制一遍。效率低下。
+```
+
 
 
 # 板子
