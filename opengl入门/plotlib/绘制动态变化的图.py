@@ -1,8 +1,9 @@
+import numpy.random
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
-
+import time
 import axis
 import figure
 import plot
@@ -16,6 +17,7 @@ EYE_UP = np.array([0.0, 1.0, 0.0])  # 定义对观察者而言的上方（默认
 WIN_W, WIN_H = 640, 640  # 保存窗口宽度和高度的变量
 LEFT_IS_DOWNED = False  # 鼠标左键被按下
 MOUSE_X, MOUSE_Y = 0, 0  # 考察鼠标位移量时保存的起始位置
+data ={}
 
 
 def getposture():
@@ -91,17 +93,17 @@ def draw():
     # 开始绘制线段（世界坐标系）
     axis.drawAxis(-1,1,-1,1)
 
-    x = np.linspace(0,2* np.pi,num=100)
-    y = np.sin(x)
+
 
 
 
     # 绘制曲线
-    # plot.drawLine(x, y, ltype='x', rgb=(1,0,0), lwidth=3)
-
+    if data:
+        plot.drawLine(data['x'],data['y'] , rgb=(1,0,0), lwidth=3)
 
     # 绘制散点图
-    plot.drawLine(x,y)
+
+    # plot.drawLine(x,y)
 
 
 
@@ -175,6 +177,15 @@ def keydown(key, x, y):
 
     print(key)
 
+def timer(value):
+        x = np.linspace(0, 2 * np.pi, num=100)
+        y = np.sin(x)
+        y = y + numpy.random.randint(0, value, 100) / 2
+        data['x'] = x
+        data['y'] = y
+        glutPostRedisplay()
+        glutTimerFunc(100, timer, value+1) #递归形成循环，从而形成不断的调用函数的效果。第一个数字是时间间隔，第二个数值是传递给timer的值，
+
 if __name__ == "__main__":
     glutInit()
     displayMode = GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH
@@ -187,10 +198,19 @@ if __name__ == "__main__":
     init()  # 初始化画布
 
 
+
+
+
     glutDisplayFunc(draw)  # 注册回调函数draw()
     glutReshapeFunc(reshape)  # 注册响应窗口改变的函数reshape()
     glutMouseFunc(mouseclick)  # 注册响应鼠标点击的函数mouseclick()
     glutMotionFunc(mousemotion)  # 注册响应鼠标拖拽的函数mousemotion()
     glutKeyboardFunc(keydown)  # 注册键盘输入的函数keydown()
+    glutTimerFunc(100,timer,1)  # 注册定时执行函数，同归递归形成不断执行。
+
+
+
+
 
     glutMainLoop()  # 进入glut主循环
+
