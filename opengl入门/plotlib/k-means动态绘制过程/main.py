@@ -203,12 +203,10 @@ def keydown(key, x, y):
 
 def timer(value):
     global count
-    # print(value)
-    count  = value
     print(count)
-    if count >= len(dataset):
-        count-=1
-        return
+    if count < len(lable)-1: # 防止下标越界
+        count+=1
+
     glutPostRedisplay()
     glutTimerFunc(1000, timer, value + 1)  # 递归形成循环，从而形成不断的调用函数的效果。第一个数字是时间间隔，第二个数值是传递给timer的值，
 
