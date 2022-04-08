@@ -2,7 +2,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
-import StateMachine as Stm
+import opengl入门.plotlib.StateMachine as Stm
 
 
 def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
@@ -16,18 +16,14 @@ def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
     :return:
     '''
 
-    s = Stm.StateArg()
-    # s.__int__()
-    dic =[1]
+    s = Stm.StateArg() # 参数栈状态机
+    dic =[1] # 默认的线宽为1
     s.pushState(glLineWidth, *dic)
 
 
 
     maxV = max(max(X), max(Y))
-    # print(maxV)
-    # 对x和y的数据进行放缩
-    X= X /maxV
-    Y = Y/ maxV
+
 
 
     glLineWidth(lwidth)  # 设置线的宽度，单位是像素
@@ -49,21 +45,28 @@ def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
         glEnd()
         s.popState()
     else:
+        s.popState()
         assert '数据错误xy数据维度不一样'
         return False
 
 
-def drawPoints(X, Y, rgb=(0,0,0), size =1,z=0):
+def drawPoints(X, Y, Z,rgb=(0,0,0), size =1):
     """
     x,y,z是点的位置
     rgb是颜色
     size是点的大小
     """
-    maxV = max(max(X), max(Y))
+
+    s = Stm.StateArg() # 参数栈状态机
+    dic =[1] # 默认的点大小为1
+    s.pushState(glPointSize, *dic)
+
+    maxV = max(max(X), max(Y),max(Z))
     # print(maxV)
-    # 对x和y的数据进行放缩
-    X= X /maxV
-    Y = Y/ maxV
+    # 对x和y的数据进行放缩[0-1]之间
+    X= X
+    Y = Y
+    Z = Z
 
 
     glPointSize(size)  # 设置点的大小
@@ -77,10 +80,11 @@ def drawPoints(X, Y, rgb=(0,0,0), size =1,z=0):
         glBegin(GL_POINTS)  # 绘制点
         glColor4f(rgb[0], rgb[1], rgb[2], 1)
         for i in range(len(X)):
-            glVertex3f(X[i], Y[i], z)
+            glVertex3f(X[i], Y[i], Z[i])
 
         glEnd()
-
+        s.popState()
     else:
+        s.popState()
         assert '数据错误xy数据维度不一样'
         return False

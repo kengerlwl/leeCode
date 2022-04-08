@@ -1,11 +1,21 @@
+import lwlPackage
+import  lwlPackage.变量存储与加载.varLD  as ST
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
 
-import axis
-import figure
-import plot
+import opengl入门.plotlib.axis
+import opengl入门.plotlib.figure
+import opengl入门.plotlib.plot as plot
+
+
+
+dataset , lable = ST.loadData('k-means.npy')
+dataset = np.array(dataset)
+dataset = dataset /100
+count =0
+
 
 IS_PERSPECTIVE = False  # 透视投影,因为现在是绘制数据分析图，不用这玩意
 VIEW = np.array([-1.1, 1.1, -1.1, 1.1, 0, 20.0])  # 视景体的left/right/bottom/top/near/far六个面
@@ -54,6 +64,7 @@ def draw():
     global EYE, LOOK_AT, EYE_UP
     global SCALE_K
     global WIN_W, WIN_H
+    global count
 
     # 清除屏幕及深度缓存
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -92,26 +103,40 @@ def draw():
 
     # ---------------------------------------------------------------
     # 开始绘制线段（世界坐标系）
-    axis.drawAxis(-1,1,-1,1)
-
-    x = np.linspace(0,1,num=100)
-    y = np.sin(x * 2 * np.pi)
-
-    # 绘制曲线
-    # plot.drawLine(x, y, ltype=None, rgb=(1,0,0), lwidth=20)
-    plot.drawPoints(x,y,Z = [0 for i in range(len(x))],size = 10)
+    # opengl入门.plotlib.axis.drawAxis(-1,1,-1,1)
 
 
 
 
-    # change color
-    # glColor4f(1,0,0,1)
-    # 绘制圆
-    # figure.drawCircle(0,0,100,0.5,0)
+    # 绘制点集
+    # print('iter ' , count)
+    for i in range(1000):
+        c = lable[count][i][0]
+        # print(c)
+
+        color = (0,0,0)
+        if c == 1:
+            color = (256,0,0)
+        elif c == 2:
+            color = (0,256,0)
+        else:
+            color = (0, 0,256)
+        X = [dataset[i][0]]
+        Y = [dataset[i][1]]
+        Z = [dataset[i][2]]
+
+        # X = x
+        # Y = y
+        # Z = z
+
+        plot.drawPoints(X,Y,Z ,size = 5, rgb = color)
+
 
 
     # ---------------------------------------------------------------
     glutSwapBuffers()  # 切换缓冲区，以显示绘制内容
+
+
 
 
 # 抽口大小变换函数
@@ -173,13 +198,19 @@ def keydown(key, x, y):
     global EYE, LOOK_AT, EYE_UP
     global IS_PERSPECTIVE, VIEW
 
-    print(key)
+    # print(key)
 
 
 def timer(value):
-    print(value)
+    global count
+    # print(value)
+    count  = value
+    print(count)
+    if count >= len(dataset):
+        count-=1
+        return
     glutPostRedisplay()
-    glutTimerFunc(100, timer, value + 1)  # 递归形成循环，从而形成不断的调用函数的效果。第一个数字是时间间隔，第二个数值是传递给timer的值，
+    glutTimerFunc(1000, timer, value + 1)  # 递归形成循环，从而形成不断的调用函数的效果。第一个数字是时间间隔，第二个数值是传递给timer的值，
 
 
 if __name__ == "__main__":
