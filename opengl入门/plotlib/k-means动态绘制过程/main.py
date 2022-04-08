@@ -13,7 +13,7 @@ import opengl入门.plotlib.plot as plot
 
 dataset , lable = ST.loadData('k-means.npy')
 dataset = np.array(dataset)
-dataset = dataset /100
+dataset = dataset /100 -0.5  # 缩放后进行居中
 count =0
 
 
