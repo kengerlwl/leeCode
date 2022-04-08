@@ -46,6 +46,9 @@ def init():
     glEnable(GL_LINE_STIPPLE)  #启用线型，可以绘制虚线之类的了
 
 
+
+
+#主要绘图函数
 def draw():
     global IS_PERSPECTIVE, VIEW
     global EYE, LOOK_AT, EYE_UP
@@ -97,14 +100,12 @@ def draw():
 
 
     # 绘制曲线
-    # plot.drawLine(x, y, ltype='x', rgb=(1,0,0), lwidth=3)
-
-
-    # 绘制散点图
-    plot.drawLine(x,y)
+    plot.drawLine(x, y, ltype='x', rgb=(1,0,0), lwidth=3)
 
 
 
+
+    # change color
     glColor4f(1,0,0,1)
     # 绘制圆
     # figure.drawCircle(0,0,100,0.5,0)

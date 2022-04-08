@@ -3,6 +3,8 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
 
+
+# 绘制三角形
 def drawTriangle(x0,y0,a,theta=90):
     '''
 
@@ -35,6 +37,7 @@ def drawTriangle(x0,y0,a,theta=90):
 
 
 
+# 绘制坐标轴
 def drawAxis(xmin,xmax, ymin, ymax):
     z = 0
     glLineStipple(1, 0xFFFF);  # 设置线型,直线

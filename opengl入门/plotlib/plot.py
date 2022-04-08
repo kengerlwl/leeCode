@@ -2,6 +2,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import numpy as np
+import StateMachine as Stm
 
 
 def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
@@ -11,8 +12,16 @@ def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
     :param Y:
     :param rgb: 线段颜色
     :param z: z的坐标
+    :param ltype 是线的类型，默认线性，说就是虚线
     :return:
     '''
+
+    s = Stm.StateArg()
+    # s.__int__()
+    dic =[1]
+    s.pushState(glLineWidth, *dic)
+
+
 
     maxV = max(max(X), max(Y))
     # print(maxV)
@@ -38,13 +47,18 @@ def drawLine(X, Y, rgb=(0,0,0), ltype =None,lwidth=1,z=0):
             glVertex3f(X[i], Y[i], z)
 
         glEnd()
-
+        s.popState()
     else:
         assert '数据错误xy数据维度不一样'
         return False
 
 
 def drawPoints(X, Y, rgb=(0,0,0), size =1,z=0):
+    """
+    x,y,z是点的位置
+    rgb是颜色
+    size是点的大小
+    """
     maxV = max(max(X), max(Y))
     # print(maxV)
     # 对x和y的数据进行放缩
