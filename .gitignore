@@ -1,3 +1,5 @@
 .idea
 opengl入门/plotlib/__pycache__
 venv
+cmake-build-debug
+CMakeLists.txt
