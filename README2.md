@@ -168,3 +168,26 @@ ans = (value -1) / k +1
                 }
         });
 ```
+
+
+
+
+
+
+## 溢出问题
+解决java定义long类型却内存溢出的问题
+原因是：a和b都是int类型，所以a*b计算的时候会默认将结果转换为int，即使最后赋值给long，此时计算结果已经是错误的了。
+
+解决方案：把a*b计算表达式中任意一个变量转换为long类型。
+```
+int a = 1000000000;
+int b = 20;
+long c = a * b;
+long d = (long)a * b;
+long e = a * (long)b;
+System.out.println("a=" + a);
+System.out.println("b=" + b);
+System.out.println("c=" + c);
+System.out.println("d=" + d);
+System.out.println("e=" + e);
+```
